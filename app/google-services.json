@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "490836390346",
+    "project_id": "ec-driver-app-a619a",
+    "storage_bucket": "ec-driver-app-a619a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:490836390346:android:86e619f2743a74ff6f9f33",
+        "android_client_info": {
+          "package_name": "com.example.ecdriver"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaW7cBTJqdaLZhmPlRF7uZgGoAhUJQJNo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
