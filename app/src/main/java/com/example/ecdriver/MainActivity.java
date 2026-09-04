@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // --- আপডেট ডায়লগ ---
+    // --- আপডেট ডায়লগ ----
     private void showUpdateDialog(String apkUrl) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Update Available")
