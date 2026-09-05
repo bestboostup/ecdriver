@@ -5,20 +5,19 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BusNumberTwo"
+    tools:context=".DriverControlActivity"
     android:orientation="vertical"
     >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        >
+        android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/tvBusTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="বাস নাম্বার : ২"
+            android:text=""
             android:fontFamily="@font/font"
             android:padding="10dp"
             android:textSize="30sp"
@@ -26,59 +25,55 @@
             android:textColor="#ffffff"
             android:background="#006C32"
             />
-
-
     </LinearLayout>
-
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:orientation="vertical"
+        android:gravity="center_horizontal"
         >
 
-        <Button
-            android:id="@+id/busnumber2start"
+        <!-- start বাটন যাতে কোড থেকে কালার কন্ট্রোল করলে শেপ নষ্ট না হয় -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnStart"
             android:layout_width="200dp"
             android:layout_height="60dp"
-            android:layout_marginTop="100dp"
-            android:layout_gravity="center"
-            android:text="যাত্রা শুরু "
+            android:layout_marginTop="80dp"
+            android:text="যাত্রা শুরু"
             android:textColor="#ffffff"
             android:fontFamily="@font/font"
             android:textStyle="bold"
-            android:textSize="26sp"
+            android:textSize="24sp"
             android:background="@drawable/textbackground"
             />
 
-        <Button
-            android:id="@+id/busnumber2end"
+        <!-- End বাটন -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnEnd"
             android:layout_width="200dp"
             android:layout_height="60dp"
-            android:layout_marginTop="50dp"
-            android:layout_gravity="center"
-            android:text="যাত্রা শেষ "
+            android:layout_marginTop="30dp"
+            android:text="যাত্রা শেষ"
             android:textColor="#ffffff"
             android:fontFamily="@font/font"
             android:textStyle="bold"
-            android:textSize="26sp"
+            android:textSize="24sp"
             android:background="@drawable/textbackground"
             />
 
-
-        <Button
-            android:id="@+id/busnumber2problem"
+        <!-- Issue বাটন -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnIssue"
             android:layout_width="200dp"
             android:layout_height="60dp"
-            android:layout_marginTop="50dp"
-            android:layout_gravity="center"
-            android:text="বাসে সমস্যা "
+            android:layout_marginTop="30dp"
+            android:text="বাসে সমস্যা"
             android:textColor="#ffffff"
             android:fontFamily="@font/font"
             android:textStyle="bold"
-            android:textSize="26sp"
+            android:textSize="24sp"
             android:background="@drawable/textbackground"
             />
 

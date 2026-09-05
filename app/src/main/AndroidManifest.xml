@@ -2,20 +2,24 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <!-- ইন্টারনেট ব্যবহারের জন্য -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
     <!-- অ্যান্ড্রয়েড ১০ বা তার নিচের ভার্সনের জন্য ফাইল রাইট পারমিশন (প্রয়োজন সাপেক্ষে) -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" tools:ignore="ScopedStorage" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
 
     <!-- অজানা সোর্স থেকে অ্যাপ ইনস্টল করার পারমিশন (অ্যান্ড্রয়েড ৮+ এর জন্য জরুরি) -->
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
-
-
-
-
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 
     <application
         android:allowBackup="true"
@@ -36,39 +40,29 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".BusNumberOne"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".BusNumberTwo"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".BusNumberThree"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".BusNumberFour"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".BusNumberFive"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
 
 
         <provider
-            android:authorities="${applicationId}.provider"
             android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/path_provider"
-                />
+                android:resource="@xml/path_provider" />
         </provider>
 
+        <!-- ব্যাকগ্রাউন্ড লোকেশন সার্ভিস -->
+        <service
+            android:name=".LocationForegroundService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="location" />
+
+        <activity
+            android:name=".DriverControlActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

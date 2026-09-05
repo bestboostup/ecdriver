@@ -5,11 +5,7 @@ plugins {
 
 android {
     namespace 'com.example.ecdriver'
-    compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
-        }
-    }
+    compileSdk 36
 
     defaultConfig {
         applicationId "com.example.ecdriver"
@@ -23,11 +19,11 @@ android {
 
     buildTypes {
         release {
-            optimization {
-                enable false
-            }
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
@@ -39,10 +35,14 @@ dependencies {
     implementation libs.appcompat
     implementation libs.constraintlayout
     implementation libs.material
+    implementation libs.play.services.location
+
+    // Firebase BoM (সব ফায়ারবেস লাইব্রেরির ভার্সন এটি কন্ট্রোল করবে)
+    implementation platform('com.google.firebase:firebase-bom:33.10.0') // স্থিতিশীল ভার্সন
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-database'
+
     testImplementation libs.junit
     androidTestImplementation libs.espresso.core
     androidTestImplementation libs.ext.junit
-    implementation platform('com.google.firebase:firebase-bom:34.18.0')
-    implementation 'com.google.firebase:firebase-analytics'
-    implementation 'com.google.firebase:firebase-database:21.0.0'
 }

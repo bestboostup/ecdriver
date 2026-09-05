@@ -7,7 +7,9 @@ public interface onDownloadListener {
 
    void onProgress(int progress);
 
-   void onComplete(File path);
+    void onprogress(int progress);
+
+    void onComplete(File path);
 
    void onError(String errorMsg);
 }
