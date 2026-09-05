@@ -157,33 +157,40 @@ public class MainActivity extends AppCompatActivity {
         }
 
         final int localVersion = currentVersionCode;
+        android.util.Log.d("UpdateCheck", "Local Version: " + localVersion);
 
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("AppUpdate");
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance("https://ec-driver-app-a619a-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("AppUpdate");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                android.util.Log.d("UpdateCheck", "Snapshot exists: " + snapshot.exists());
                 if (snapshot.exists()) {
                     Long serverVersionLong = snapshot.child("versionCode").getValue(Long.class);
                     String apkDownloadUrl = snapshot.child("apkUrl").getValue(String.class);
 
+                    android.util.Log.d("UpdateCheck", "Server Version: " + serverVersionLong + ", URL: " + apkDownloadUrl);
+
                     if (serverVersionLong != null && apkDownloadUrl != null) {
                         int serverVersionCode = serverVersionLong.intValue();
 
-                        // ফায়ারবেসের ভার্সন লোকাল ভার্সন থেকে বেশি হলে আপডেট ডায়লগ দেখাবে
                         if (serverVersionCode > localVersion) {
                             showUpdateDialog(apkDownloadUrl);
+                        } else {
+                            android.util.Log.d("UpdateCheck", "Server version is not greater than local version.");
                         }
                     }
+                } else {
+                    android.util.Log.d("UpdateCheck", "AppUpdate node does not exist in Firebase!");
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                android.util.Log.d("UpdateCheck", "Error: " + error.getMessage());
                 Toast.makeText(MainActivity.this, "Update check failed: " + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
-
     // --- আপডেট ডায়লগ -----
     private void showUpdateDialog(String apkUrl) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

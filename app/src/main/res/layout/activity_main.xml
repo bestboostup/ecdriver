@@ -11,12 +11,22 @@
 
     <!-- In App Update -->
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        >
+
+
+
+
     <com.google.android.material.progressindicator.LinearProgressIndicator
         android:id="@+id/progressBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:max="100"
+        app:indicatorColor="#006C32"
         android:progress="0"
         android:visibility="gone" />
 
@@ -28,8 +38,11 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:text="0%"
+        android:textColor="#006C32"
         android:textSize="16sp"
         android:visibility="gone" />
+
+    </RelativeLayout>
 
 
     <!-- In App Update Code End -->
